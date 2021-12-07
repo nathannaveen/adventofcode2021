@@ -71,9 +71,7 @@ func oneDay5() {
 	}
 
 	/*
-
 		Now we can start using line sweep for the horizontal and vertical lines
-
 	*/
 
 	for _, horizontal := range horizontals {
