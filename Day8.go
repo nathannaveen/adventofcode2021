@@ -57,7 +57,6 @@ func twoDay8() {
 		// jumbledNumber = number : mixed up numbers (used to find the number in O(1) time)
 		// properNumber = mixed up number : number (used for finding the mixed up number in O(1) time)
 		num := 0
-		arr := []string{}
 
 		lengthFiveOrSix := func(a string) {
 			fourCounter, oneCounter := 0, 0
@@ -100,6 +99,10 @@ func twoDay8() {
 			}
 		}
 
+		sort.Slice(before, func(i, j int) bool { // sort by number of LED's to get rid of the skipping
+			return len(before[i]) < len(before[j])
+		})
+
 		for _, a := range before {
 			newA := strings.Split(a, "")
 			sort.Strings(newA)
@@ -120,16 +123,8 @@ func twoDay8() {
 			default: // if the length is 5 or 6
 				if jumbledNumber[4] != "" && jumbledNumber[1] != "" {
 					lengthFiveOrSix(a)
-				} else {
-					// we need the 1 and 4 to find out the actual number,
-					// so skip for now
-					arr = append(arr, a)
 				}
 			}
-		}
-
-		for _, a := range arr { // Do all the skipped number
-			lengthFiveOrSix(a)
 		}
 
 		for _, a := range after {
