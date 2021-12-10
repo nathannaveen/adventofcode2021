@@ -75,7 +75,7 @@ func twoDay9() {
 	}
 
 	canFlow := func(i, j, val int, start pos) {
-		// This is for finding whether water can flow from one place to another.
+		// This is for finding whether smoke can flow from one place to another.
 		if i >= 0 && j >= 0 && i < len(arr) && j < len(arr[0]) &&
 			!visited[pos{i, j}] && arr[i][j] != '9' && int(arr[i][j]-'0') > val {
 			visited[pos{i, j}] = true
@@ -129,7 +129,7 @@ func twoDay9Edit() {
 	}
 
 	canFlow := func(i, j, val int, start pos) {
-		// This is for finding whether water can flow from one place to another.
+		// This is for finding whether smoke can flow from one place to another.
 		if i >= 0 && j >= 0 && i < len(arr) && j < len(arr[0]) &&
 			!visited[pos{i, j}] && arr[i][j] != '9' && int(arr[i][j]-'0') > val {
 			visited[pos{i, j}] = true
