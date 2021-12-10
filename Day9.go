@@ -92,12 +92,12 @@ func twoDay9() {
 	for len(stack) != 0 {
 		pop := stack[len(stack)-1]
 		stack = stack[:len(stack)-1]
-		i, j, start := pop.actual.i, pop.actual.j, pop.start
+		y, x, start := pop.actual.i, pop.actual.j, pop.start
 
-		canFlow(i+1, j, int(arr[i][j]-'0'), start)
-		canFlow(i-1, j, int(arr[i][j]-'0'), start)
-		canFlow(i, j+1, int(arr[i][j]-'0'), start)
-		canFlow(i, j-1, int(arr[i][j]-'0'), start)
+		canFlow(y+1, x, int(arr[i][j]-'0'), start)
+		canFlow(y-1, x, int(arr[i][j]-'0'), start)
+		canFlow(y, x+1, int(arr[i][j]-'0'), start)
+		canFlow(y, x-1, int(arr[i][j]-'0'), start)
 	}
 
 	sort.Ints(res)
