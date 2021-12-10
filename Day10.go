@@ -18,6 +18,7 @@ func oneDay10() int {
 
 	for _, line := range arr {
 		stack := []string{}
+		shouldBreak := false
 		for i := 0; i < len(line); i++ {
 			char := string(line[i])
 			if char == "(" || char == "[" || char == "{" || char == "<" {
@@ -25,17 +26,21 @@ func oneDay10() int {
 			} else {
 				pop := stack[len(stack)-1]
 				stack = stack[:len(stack)-1]
-				if char == ")" && pop != "(" {
+				switch {
+				case char == ")" && pop != "(":
 					res += 3
-					break
-				} else if char == "]" && pop != "[" {
+					shouldBreak = true
+				case char == "]" && pop != "[":
 					res += 57
-					break
-				} else if char == "}" && pop != "{" {
+					shouldBreak = true
+				case char == "}" && pop != "{":
 					res += 1197
-					break
-				} else if char == ">" && pop != "<" {
+					shouldBreak = true
+				case char == ">" && pop != "<":
 					res += 25137
+					shouldBreak = true
+				}
+				if shouldBreak {
 					break
 				}
 			}
@@ -60,21 +65,23 @@ func twoDay10() int {
 			} else {
 				pop := stack[len(stack)-1]
 				stack = stack[:len(stack)-1]
-				if char == ")" && pop != "(" {
+				switch {
+				case char == ")" && pop != "(":
 					shouldBreak = true
-				} else if char == "]" && pop != "[" {
+				case char == "]" && pop != "[":
 					shouldBreak = true
-				} else if char == "}" && pop != "{" {
+				case char == "}" && pop != "{":
 					shouldBreak = true
-				} else if char == ">" && pop != "<" {
+				case char == ">" && pop != "<":
 					shouldBreak = true
 				}
-			}
-			if shouldBreak {
-				break
+				if shouldBreak {
+					break
+				}
 			}
 		}
-		if !shouldBreak && len(stack) != 0 {
+
+		if !shouldBreak { // if the line is correct but incomplete
 			res = append(res, 0)
 
 			for len(stack) != 0 {
@@ -94,6 +101,7 @@ func twoDay10() int {
 			}
 		}
 	}
+
 	sort.Ints(res)
 
 	return res[len(res)/2]
