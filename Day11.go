@@ -11,7 +11,7 @@ func main() {
 	fmt.Println(oneDay11())
 }
 
-type point struct {
+type p struct {
 	i, j int
 }
 
@@ -40,7 +40,7 @@ func oneDay11() int {
 
 		for i := 0; i < len(arr); i++ {
 			for j := 0; j < len(arr[0]); j++ {
-				stack := []point{{i, j}}
+				stack := []p{{i, j}}
 
 				for len(stack) > 0 {
 					pop := stack[len(stack)-1]
@@ -50,32 +50,8 @@ func oneDay11() int {
 						if arr[pop.i][pop.j] == 10 {
 							flashes++
 
-							stack = append(stack, point{pop.i + 1, pop.j}, point{pop.i - 1, pop.j}, point{pop.i, pop.j + 1}, point{pop.i, pop.j - 1},
-								point{pop.i + 1, pop.j + 1}, point{pop.i - 1, pop.j - 1}, point{pop.i + 1, pop.j - 1}, point{pop.i - 1, pop.j + 1})
-							//if pop.i - 1 >= 0 {
-							//	stack = append(stack, point{pop.i - 1, pop.j})
-							//}
-							//if pop.i - 1 >= 0 && pop.j + 1< len(arr[0]) {
-							//	stack = append(stack, point{pop.i - 1, pop.j + 1})
-							//}
-							//if pop.j + 1 < len(arr[0]) {
-							//	stack = append(stack, point{i, pop.j + 1})
-							//}
-							//if pop.i + 1 < len(arr) && pop.j + 1 < len(arr[0]) {
-							//	stack = append(stack, point{pop.i + 1, pop.j + 1})
-							//}
-							//if pop.i + 1 < len(arr) {
-							//	stack = append(stack, point{pop.i + 1, pop.j})
-							//}
-							//if pop.i < len(arr) && pop.j - 1 >= 0 {
-							//	stack = append(stack, point{pop.i + 1, pop.j - 1})
-							//}
-							//if pop.j - 1 >= 0 {
-							//	stack = append(stack, point{i, pop.j - 1})
-							//}
-							//if pop.i - 1 >= 0 && pop.j - 1 >= 0 {
-							//	stack = append(stack, point{pop.i - 1, pop.j - 1})
-							//}
+							stack = append(stack, p{pop.i + 1, pop.j}, p{pop.i - 1, pop.j}, p{pop.i, pop.j + 1}, p{pop.i, pop.j - 1},
+								p{pop.i + 1, pop.j + 1}, p{pop.i - 1, pop.j - 1}, p{pop.i + 1, pop.j - 1}, p{pop.i - 1, pop.j + 1})
 						}
 					}
 				}
