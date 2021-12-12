@@ -32,11 +32,16 @@ func oneDay11() int {
 	}
 
 	flashes := 0
+	totalFlashes := 0
 	steps := 0
 
 	for flashes < 100 {
 		flashes = 0
 		steps++
+
+		if steps == 99 {
+			fmt.Println(totalFlashes)
+		}
 
 		for i := 0; i < len(arr); i++ {
 			for j := 0; j < len(arr[0]); j++ {
@@ -65,6 +70,7 @@ func oneDay11() int {
 				}
 			}
 		}
+		totalFlashes += flashes
 	}
 
 	return steps
