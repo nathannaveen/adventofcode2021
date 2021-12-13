@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println(oneDay11())
+	fmt.Println(twoDay11())
 }
 
 type p struct {
@@ -17,7 +17,7 @@ type p struct {
 
 var arr = [][]int{}
 
-func oneDay11() int {
+func twoDay11() int {
 	input, _ := ioutil.ReadFile("input11.txt")
 
 	var arr2 = strings.Split(string(input), "\n")
