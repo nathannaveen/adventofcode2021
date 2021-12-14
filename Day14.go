@@ -66,11 +66,11 @@ func Day14() {
 		return maximum - minimum
 	}
 
-	for k := 1; k <= 40; k++ {
+	for i := 1; i <= 40; i++ {
 		count = addIn()
-		if k == 10 {
+		if i == 10 {
 			fmt.Println("Part 1 day 14 is:", findRes())
-		} else if k == 40 {
+		} else if i == 40 {
 			fmt.Println("Part 2 day 14 is:", findRes())
 		}
 	}
