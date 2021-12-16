@@ -42,11 +42,11 @@ func oneDay9() {
 // Part Two Bellow:
 
 type lowPos struct {
-	actual pos
-	start  pos // the low position that we started at
+	actual actualPos
+	start  actualPos // the low position that we started at
 }
 
-type pos struct {
+type actualPos struct {
 	i, j int
 }
 
@@ -55,9 +55,9 @@ func twoDay9() {
 	var arr = strings.Split(string(input), "\n")
 
 	stack := []lowPos{}
-	m := make(map[pos]int) // position : index in res
-	res := []int{}         // size of basin
-	visited := make(map[pos]bool)
+	m := make(map[actualPos]int) // position : index in res
+	res := []int{}               // size of basin
+	visited := make(map[actualPos]bool)
 	i, j := 0, 0
 
 	isLow := func(y, x int) bool {
@@ -72,20 +72,20 @@ func twoDay9() {
 	for i = 0; i < len(arr); i++ {
 		for j = 0; j < len(arr[0]); j++ {
 			if isLow(i+1, j) && isLow(i-1, j) && isLow(i, j+1) && isLow(i, j-1) {
-				stack = append(stack, lowPos{pos{i, j}, pos{i, j}})
+				stack = append(stack, lowPos{actualPos{i, j}, actualPos{i, j}})
 				res = append(res, 1)
-				m[pos{i, j}] = len(res) - 1
+				m[actualPos{i, j}] = len(res) - 1
 			}
 		}
 	}
 
-	canFlow := func(i, j, val int, start pos) {
+	canFlow := func(i, j, val int, start actualPos) {
 		// This is for finding whether smoke can flow from one place to another.
 		if i >= 0 && j >= 0 && i < len(arr) && j < len(arr[0]) &&
-			!visited[pos{i, j}] && arr[i][j] != '9' && int(arr[i][j]-'0') > val {
-			visited[pos{i, j}] = true
+			!visited[actualPos{i, j}] && arr[i][j] != '9' && int(arr[i][j]-'0') > val {
+			visited[actualPos{i, j}] = true
 			res[m[start]]++
-			stack = append(stack, lowPos{pos{i, j}, start})
+			stack = append(stack, lowPos{actualPos{i, j}, start})
 		}
 	}
 

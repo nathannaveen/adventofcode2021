@@ -15,13 +15,11 @@ type p struct {
 	i, j int
 }
 
-var arr = [][]int{}
-
 func twoDay11() int {
 	input, _ := ioutil.ReadFile("input11.txt")
 
 	var arr2 = strings.Split(string(input), "\n")
-	arr = make([][]int, len(arr2))
+	arr := make([][]int, len(arr2))
 
 	for i, line := range arr2 {
 		arr[i] = make([]int, len(line))
