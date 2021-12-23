@@ -43,12 +43,7 @@ func oneDay17() int {
 // PART 2:
 
 type velocity struct {
-	x int
-	y int
-}
-
-type Pair struct {
-	a, b velocity
+	x, y int
 }
 
 func twoDay17() int {
